@@ -11,7 +11,7 @@ const UserProfile = () => {
   const [isBioModalOpen, setIsBioModalOpen] = useState(false);
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
   const [isProfileImageModalOpen, setIsProfileImageModalOpen] = useState(false);
-  const [loading, setLoading] = useState(false); // New loading state
+  const [loading, setLoading] = useState(false); 
 
   const fetchUserDetails = async () => {
     try {
@@ -32,7 +32,7 @@ const UserProfile = () => {
         alert('Bio should not exceed 500 characters.');
         return;
       }
-      const response = await axios.put('http://localhost:4000/api/user/updateUserData', {
+      const response = await axios.put('https://user-backend-k20c.onrender.com/api/user/updateUserData', {
         bio: newBio,
       }, {
         headers: {
@@ -59,7 +59,7 @@ const UserProfile = () => {
     formData.append('description', videoData.description);
 
     try {
-      const response = await axios.put('http://localhost:4000/api/user/upload-video', formData, {
+      const response = await axios.put('https://user-backend-k20c.onrender.com/api/user/upload-video', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
@@ -72,12 +72,12 @@ const UserProfile = () => {
       console.error('Error uploading video:', error);
       alert('Error uploading video.');
     } finally {
-      setLoading(false); // End loading
+      setLoading(false);
     }
   };
 
   const handleProfileImageUpload = async (e) => {
-    setLoading(true); // Start loading
+    setLoading(true); 
     const file = e;
     if (!file) {
       alert('Please select a file to upload.');
@@ -89,7 +89,7 @@ const UserProfile = () => {
     formData.append('profileImage', file);
 
     try {
-      const response = await axios.put('http://localhost:4000/api/user/upload-profile', formData, {
+      const response = await axios.put('https://user-backend-k20c.onrender.com/api/user/upload-profile', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
@@ -102,7 +102,7 @@ const UserProfile = () => {
       console.error('Error uploading image:', error);
       alert('Error uploading profile image.');
     } finally {
-      setLoading(false); // End loading
+      setLoading(false); 
     }
   };
 
