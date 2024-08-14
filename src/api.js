@@ -3,7 +3,7 @@ const token = localStorage.getItem("token");
 if (token) {
   axios.defaults.headers.common["x-access-token"] = token; 
 }
-const API_URL = process.env.API_URL; 
+const API_URL = process.env.BACKEND_API_URL; 
 export const signup = (data) => axios.post(`${API_URL}/signup`, data);
 export const login = (data) => axios.post(`${API_URL}/login`, data);
 export const getUserDetails = () => axios.get(`${API_URL}/getUserDetails`);
